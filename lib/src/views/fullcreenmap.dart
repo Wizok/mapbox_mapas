@@ -30,18 +30,39 @@ class _FullScreenMapState extends State<FullScreenMap> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
+        // Simbolos
+        FloatingActionButton(
+          child: Icon(Icons.sentiment_very_dissatisfied),
+          onPressed: () {
+            mapController.addSymbol(
+              SymbolOptions(
+                geometry: center,
+                iconSize: 3,
+                iconImage: 'attraction-15',
+                textField: 'Montaña creada aquí',
+                textOffset: Offset(0, 2),
+              ),
+            );
+          },
+        ),
+        SizedBox(height: 5),
+
+        // Zoom in
         FloatingActionButton(
             child: Icon(Icons.zoom_in),
             onPressed: () {
               mapController.animateCamera(CameraUpdate.zoomIn());
             }),
         SizedBox(height: 5),
+
+        // Zoom out
         FloatingActionButton(
             child: Icon(Icons.zoom_out),
             onPressed: () {
               mapController.animateCamera(CameraUpdate.zoomOut());
             }),
         SizedBox(height: 5),
+
         // Cambiar Estilos
         FloatingActionButton(
           child: Icon(Icons.add_to_home_screen),
